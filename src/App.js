@@ -8,10 +8,10 @@ import Today from './pages/Today'
 import Tomorrow from './pages/Tomorrow'
 import Week from './pages/Week'
 import Nav from './components/Nav';
+import Zip from './components/Zip';
 
 function App() {
 
-  const [location, setLocation] = useState("40.447,-80.0062")
   const LocationContext = createContext()
 
   const [current, setCurrent] = useState({})
@@ -23,8 +23,22 @@ function App() {
   const [weeklyUrl, setWeeklyUrl] = useState('')
   const [city, setCity] = useState('')
   const [state, setState] = useState('')
+  const [zip, setZip] = useState('')
 
-  const { data: nwsLocation } = useFetch(`https://api.weather.gov/points/40.447,-80.0062`)
+  const [location, setLocation] = useState('')
+
+  const { data: latlong } = useFetch(`https://api.zippopotam.us/us/${zip}`)
+
+
+  useEffect(() => {
+    if (zip && latlong) {
+      let _loc = `${latlong.places[0].latitude},${latlong.places[0].longitude}`
+      setLocation(_loc)
+      console.log(_loc)
+    }
+  }, [zip, latlong])
+
+  const { data: nwsLocation } = useFetch(`https://api.weather.gov/points/${location}`)
 
   useEffect(() => {
     if(nwsLocation) {
@@ -53,18 +67,23 @@ function App() {
     }
   }, [weekly, today, tonight])
 
+  const getZip = (enteredZip) => {
+    setZip(enteredZip)
+  }
+
   return (
     <div className="App">
 
-      <LocationContext.Provider value={location}>
+
         <Nav />
+        <Zip getZip={getZip} />
         <p>Weather for: {location} {city} {state}</p>
         <Routes>
           <Route path="/" element={<Today current={current} today={today} tonight={tonight} />}  />
           <Route path="/tomorrow" element={<Tomorrow tomorrow={tomorrow} />} />
           <Route path="/week" element={<Week week={week} />} />
         </Routes>
-      </LocationContext.Provider>
+
 
 
     </div>
