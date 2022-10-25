@@ -12,8 +12,6 @@ import Zip from './components/Zip';
 
 function App() {
 
-  const LocationContext = createContext()
-
   const [current, setCurrent] = useState({})
   const [today, setToday] = useState({})
   const [tonight, setTonight] = useState({})
@@ -27,16 +25,18 @@ function App() {
 
   const [location, setLocation] = useState('')
 
-  const { data: latlong } = useFetch(`https://api.zippopotam.us/us/${zip}`)
-
+  const findLocationFromZip = async (zip) => {
+    const res = await fetch(`https://api.zippopotam.us/us/${zip}`)
+    const data = await res.json()
+    let _loc = `${data.places[0].latitude},${data.places[0].longitude}`
+    setLocation(_loc)
+  }
 
   useEffect(() => {
-    if (zip && latlong) {
-      let _loc = `${latlong.places[0].latitude},${latlong.places[0].longitude}`
-      setLocation(_loc)
-      console.log(_loc)
+    if (zip) {
+    findLocationFromZip(zip)  
     }
-  }, [zip, latlong])
+  }, [zip])
 
   const { data: nwsLocation } = useFetch(`https://api.weather.gov/points/${location}`)
 
@@ -73,8 +73,6 @@ function App() {
 
   return (
     <div className="App">
-
-
         <Nav />
         <Zip getZip={getZip} />
         <p>Weather for: {location} {city} {state}</p>
