@@ -1,14 +1,13 @@
 import './App.css';
-import { useState, useEffect, createContext } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { useFetch } from "./hooks/useFetch"
 
 //pages
-import Today from './pages/Today'
+import Home from './pages/Home'
 import Tomorrow from './pages/Tomorrow'
 import Week from './pages/Week'
 import Nav from './components/Nav';
-import Zip from './components/Zip';
 
 function App() {
 
@@ -23,7 +22,6 @@ function App() {
   const [city, setCity] = useState('')
   const [state, setState] = useState('')
   const [zip, setZip] = useState('')
-
   const [location, setLocation] = useState('')
 
   //use zip code
@@ -43,6 +41,7 @@ function App() {
   }
 
   //find NWS Location
+
   const { data: nwsLocation } = useFetch(`https://api.weather.gov/points/${location}`)
 
   useEffect(() => {
@@ -92,17 +91,14 @@ function App() {
   //Display
   return (
     <div className="App">
-        <Nav />
-        <Zip getZip={getZip} />
-        <button onClick={useGeolocation}>Use Geolocation</button>
+        <Nav useGeolocation={useGeolocation} getZip={getZip} />
+       
         <p>Weather for: {location} {city} {state}</p>
         <Routes>
-          <Route path="/" element={<Today current={current} today={today} tonight={tonight} />}  />
+          <Route path="/" element={<Home current={current} today={today} tonight={tonight} />}  />
           <Route path="/tomorrow" element={<Tomorrow tomorrow={tomorrow} />} />
           <Route path="/week" element={<Week week={week} />} />
         </Routes>
-
-
 
     </div>
   );

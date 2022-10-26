@@ -6,6 +6,11 @@ export const useFetch = (url) => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
+
+    if (url === 'https://api.weather.gov/points/') {
+      return
+    }
+
     const controller = new AbortController()
 
     const fetchData = async () => {

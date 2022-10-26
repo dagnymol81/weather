@@ -12,16 +12,17 @@ export default function Zip({ getZip }) {
 
   return(
     <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="zip">ZIP Code:</label>
-          <br/>
+      <form onSubmit={handleSubmit} className="d-flex">
+        <label htmlFor="zip">ZIP Code: </label>
             <input 
                 id="zip" 
                 type="text" 
                 ref={zipRef} 
+                className="form-control form-control-lg me-2"
+                size="5"
+                maxLength="5"
             />
-            <br/><br/>
-          <button>Submit</button>
+          <button className="btn btn-primary">OK</button>
         </form>
     </div>
   )

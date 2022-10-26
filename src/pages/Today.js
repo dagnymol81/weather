@@ -1,8 +1,14 @@
+import ShowPicture from "../components/ShowPicture";
+
 export default function Today({ current, today, tonight }) {
 
   return(
     <div>
+
       <h1>Today's Weather</h1>
+
+      <ShowPicture today={today} />
+
         <p>
           It is {current.shortForecast}. The temperature is {current.temperature}{current.temperatureUnit}
         </p>
