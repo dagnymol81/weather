@@ -12,6 +12,7 @@ import Zip from './components/Zip';
 
 function App() {
 
+  //variables
   const [current, setCurrent] = useState({})
   const [today, setToday] = useState({})
   const [tonight, setTonight] = useState({})
@@ -41,6 +42,7 @@ function App() {
     setZip(enteredZip)
   }
 
+  //find NWS Location
   const { data: nwsLocation } = useFetch(`https://api.weather.gov/points/${location}`)
 
   useEffect(() => {
@@ -52,6 +54,7 @@ function App() {
     }
   }, [nwsLocation])
   
+  //Get Forecasts
   const { data: hourly } = useFetch(hourlyUrl)
   const { data: weekly } = useFetch(weeklyUrl)
 
@@ -70,6 +73,7 @@ function App() {
     }
   }, [weekly, today, tonight])
 
+  //Use Geolocation
   function useGeolocation() {
     function success(position) {
       setLocation(`${position.coords.latitude},${position.coords.longitude}`)
@@ -85,6 +89,7 @@ function App() {
   }
 
 
+  //Display
   return (
     <div className="App">
         <Nav />

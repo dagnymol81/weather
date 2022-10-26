@@ -7,6 +7,7 @@ export default function Zip({ getZip }) {
   const handleSubmit = (e) => {
       e.preventDefault()
       getZip(zipRef.current.value)
+      zipRef.current.value = ''
     }
 
   return(
