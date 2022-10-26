@@ -25,18 +25,21 @@ function App() {
 
   const [location, setLocation] = useState('')
 
+  //use zip code
   const findLocationFromZip = async (zip) => {
     const res = await fetch(`https://api.zippopotam.us/us/${zip}`)
     const data = await res.json()
     let _loc = `${data.places[0].latitude},${data.places[0].longitude}`
     setLocation(_loc)
   }
-
   useEffect(() => {
     if (zip) {
     findLocationFromZip(zip)  
     }
   }, [zip])
+  const getZip = (enteredZip) => {
+    setZip(enteredZip)
+  }
 
   const { data: nwsLocation } = useFetch(`https://api.weather.gov/points/${location}`)
 
@@ -67,14 +70,26 @@ function App() {
     }
   }, [weekly, today, tonight])
 
-  const getZip = (enteredZip) => {
-    setZip(enteredZip)
+  function useGeolocation() {
+    function success(position) {
+      setLocation(`${position.coords.latitude},${position.coords.longitude}`)
+    }
+    function error() {
+      console.log('geolocation errior')
+    }
+    if (!navigator.geolocation) {
+      console.log('geolocation unavailable')
+    } else {
+      navigator.geolocation.getCurrentPosition(success, error)
+    }
   }
+
 
   return (
     <div className="App">
         <Nav />
         <Zip getZip={getZip} />
+        <button onClick={useGeolocation}>Use Geolocation</button>
         <p>Weather for: {location} {city} {state}</p>
         <Routes>
           <Route path="/" element={<Today current={current} today={today} tonight={tonight} />}  />
