@@ -1,10 +1,8 @@
 import Card from "./Card";
 import Current from "./Current";
-import ShowPicture from "./ShowPicture"
-import Tomorrow from "./Tomorrow";
-import Tonight from "./Tonight";
 
-export default function TwoDay({ current, today, tonight, city, state, tomorrow }) {
+
+export default function TwoDay({ current, city, state, periodOne, periodTwo, periodThree  }) {
 
   return(
     <div>
@@ -13,15 +11,10 @@ export default function TwoDay({ current, today, tonight, city, state, tomorrow 
 
       <div className="d-flex flex-row justify-content-around p-5">
 
-      {current && <Current current={current} today={today} />}
-
-
-
-      <Card today={today} />
-
-      {tonight && <Tonight today={today} tonight={tonight} />}
-
-      <Tomorrow tomorrow={tomorrow} />
+      {current && <Current current={current} />}
+      {periodOne && <Card period={periodOne} />}
+      {periodTwo && <Card period={periodTwo} />}
+      {periodThree && <Card period={periodThree} />}
 
     </div>
   </div>

@@ -1,9 +1,9 @@
 import ShowPicture from "./ShowPicture"
 
-export default function Card({ today }) {
+export default function Card({ period }) {
 
-  let forecast = today.shortForecast
-  let temperature = today.temperature
+  let forecast = period.shortForecast
+  let temperature = period.temperature
 
   return(
     <div>

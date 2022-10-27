@@ -5,7 +5,6 @@ import { useFetch } from "./hooks/useFetch"
 
 //pages
 import Home from './pages/Home'
-import Tomorrow from './pages/Tomorrow'
 import Week from './pages/Week'
 import Nav from './components/Nav';
 
@@ -13,9 +12,11 @@ function App() {
 
   //variables
   const [current, setCurrent] = useState({})
-  const [today, setToday] = useState({})
-  const [tonight, setTonight] = useState({})
-  const [tomorrow, setTomorrow] = useState({})
+
+  const [periodOne, setPeriodOne] = useState({})
+  const [periodTwo, setPeriodTwo] = useState({})
+  const [periodThree, setPeriodThree] = useState({})
+
   const [week, setWeek] = useState([])
   const [hourlyUrl, setHourlyUrl] = useState('')
   const [weeklyUrl, setWeeklyUrl] = useState('')
@@ -65,12 +66,12 @@ function App() {
 
   useEffect(() => {
     if (weekly) {
-      setToday(weekly.properties.periods[0])
-      setTonight(weekly.properties.periods[1])
-      setTomorrow(weekly.properties.periods[2])
+      setPeriodOne(weekly.properties.periods[0])
+      setPeriodTwo(weekly.properties.periods[1])
+      setPeriodThree(weekly.properties.periods[2])
       setWeek(weekly.properties.periods)
     }
-  }, [weekly, today, tonight])
+  }, [weekly, periodOne, periodTwo])
 
   //Use Geolocation
   function useGeolocation() {
@@ -95,7 +96,7 @@ function App() {
         <Nav useGeolocation={useGeolocation} getZip={getZip} />
 
             <Routes>
-              <Route path="/" element={<Home current={current} today={today} tonight={tonight} city={city} state={state} getZip={getZip} useGeolocation={useGeolocation} tomorrow={tomorrow} />}  />
+              <Route path="/" element={<Home current={current} periodOne={periodOne} periodTwo={periodTwo} periodThree={periodThree} city={city} state={state} getZip={getZip} useGeolocation={useGeolocation} />}  />
               <Route path="/week" element={<Week week={week} />} />
             </Routes>
 
