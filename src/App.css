@@ -21,3 +21,14 @@ h1 {
   text-align: center;
   margin: 2rem;
 }
+
+.welcome {
+  width: fit-content;
+  min-height: 50vh;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}

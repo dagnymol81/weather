@@ -1,6 +1,6 @@
 import './App.css';
-import { useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { useState, useEffect, createContext } from 'react'
+import { Routes, Route, } from 'react-router-dom'
 import { useFetch } from "./hooks/useFetch"
 
 //pages
@@ -10,6 +10,8 @@ import Week from './pages/Week'
 import Nav from './components/Nav';
 
 function App() {
+
+  const WeatherContext = createContext()
 
   //variables
   const [current, setCurrent] = useState({})
@@ -91,12 +93,20 @@ function App() {
   //Display
   return (
     <div className="App">
-        <Nav useGeolocation={useGeolocation} getZip={getZip} />
+
+
+
+      <Nav useGeolocation={useGeolocation} getZip={getZip} />
+
           <Routes>
             <Route path="/" element={<Home current={current} today={today} tonight={tonight} city={city} state={state} getZip={getZip} useGeolocation={useGeolocation} />}  />
             <Route path="/tomorrow" element={<Tomorrow tomorrow={tomorrow} />} />
             <Route path="/week" element={<Week week={week} />} />
           </Routes>
+
+
+
+
 
 
     </div>
