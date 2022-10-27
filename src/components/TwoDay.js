@@ -9,12 +9,12 @@ export default function TwoDay({ current, city, state, periodOne, periodTwo, per
 
       <h1>Weather for {city} {state}</h1>
 
-      <div className="d-flex flex-row justify-content-around p-5">
+      <div className="d-flex flex-row flex-wrap justify-content-around p-5 align-items-stretch weather-cards">
 
       {current && <Current current={current} />}
-      {periodOne && <Card period={periodOne} />}
-      {periodTwo && <Card period={periodTwo} />}
-      {periodThree && <Card period={periodThree} />}
+      {periodOne && <Card period={periodOne} id={1} />}
+      {periodTwo && <Card period={periodTwo} id={2} />}
+      {periodThree && <Card period={periodThree} id={3} />}
 
     </div>
   </div>

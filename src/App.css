@@ -1,12 +1,18 @@
 .weather-card {
   width: 20rem;
+  height: 30rem;
 }
 
-.weather-card img {
+.card-body img {
   width: 15rem;
+  height: 15rem;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1rem;
+}
+
+.weather-cards {
+  gap: 5rem;
 }
 
 div.weekly >div:nth-of-type(odd) {
@@ -19,7 +25,7 @@ div.weekly div {
 
 h1 {
   text-align: center;
-  margin: 2rem;
+  margin-bottom: 2rem;
 }
 
 .welcome {

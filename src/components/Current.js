@@ -6,18 +6,25 @@ export default function Current({ current }) {
   let currentTemperature = current.temperature
 
   return(
-  <>
-  <div className="card weather-card border-info rounded-2 shadow-lg">
+
+<div className="card weather-card border-info rounded-2 shadow-lg fs-4 m3">
     <div className="card-header fs-2">
     Now
     </div>
-    {now && <ShowPicture weather={now} />}
+
 
     <div className="card-body">
 
-    <p className="card-text m-1 fs-2 text-center">{now} {currentTemperature}F</p>
+    {now && <ShowPicture weather={now} />}
 
     </div>
-  </div>    
-</>
+    <div class="card-footer">
+    {now} {currentTemperature}F
+   </div>
+
+
+
+    </div>
+ 
+
 )}

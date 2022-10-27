@@ -18,7 +18,7 @@ export default function Zip({ getZip }) {
                 id="zip" 
                 type="text" 
                 ref={zipRef} 
-                className="form-control form-control-lg me-2"
+                className="form-control form-control-lg mx-2"
                 size="5"
                 maxLength="5"
             />
