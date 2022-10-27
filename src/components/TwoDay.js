@@ -7,7 +7,7 @@ export default function TwoDay({ current, city, state, periodOne, periodTwo, per
   return(
     <div>
 
-      <h1>Weather for {city} {state}</h1>
+      <h1 className="today">Weather for {city} {state}</h1>
 
       <div className="d-flex flex-row flex-wrap justify-content-around p-5 align-items-stretch weather-cards">
 

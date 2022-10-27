@@ -6,7 +6,12 @@ import { useFetch } from "./hooks/useFetch"
 //pages
 import Home from './pages/Home'
 import Week from './pages/Week'
+import About from './pages/About'
+
+//components
 import Nav from './components/Nav';
+
+//todo geolocation component
 
 function App() {
 
@@ -98,6 +103,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home current={current} periodOne={periodOne} periodTwo={periodTwo} periodThree={periodThree} city={city} state={state} getZip={getZip} useGeolocation={useGeolocation} />}  />
               <Route path="/week" element={<Week week={week} />} />
+              <Route path="/about" element={<About />} />
             </Routes>
 
     </div>

@@ -28,6 +28,10 @@ h1 {
   margin-bottom: 2rem;
 }
 
+h1.today {
+  margin-top: 2rem;
+}
+
 .welcome {
   width: fit-content;
   min-height: 50vh;

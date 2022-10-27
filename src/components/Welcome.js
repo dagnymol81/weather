@@ -1,4 +1,4 @@
-import Geolocation from "../components/Geolocation"
+import Geolocation from "./Geolocation"
 import Zip from "../components/Zip"
 
 export default function Welcome({ getZip, useGeolocation }) {
