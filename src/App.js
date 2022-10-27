@@ -78,7 +78,7 @@ function App() {
       setLocation(`${position.coords.latitude},${position.coords.longitude}`)
     }
     function error() {
-      console.log('geolocation errior')
+      console.log('geolocation error')
     }
     if (!navigator.geolocation) {
       console.log('geolocation unavailable')
@@ -92,13 +92,12 @@ function App() {
   return (
     <div className="App">
         <Nav useGeolocation={useGeolocation} getZip={getZip} />
-       
-        <p>Weather for: {location} {city} {state}</p>
-        <Routes>
-          <Route path="/" element={<Home current={current} today={today} tonight={tonight} />}  />
-          <Route path="/tomorrow" element={<Tomorrow tomorrow={tomorrow} />} />
-          <Route path="/week" element={<Week week={week} />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home current={current} today={today} tonight={tonight} city={city} state={state} getZip={getZip} useGeolocation={useGeolocation} />}  />
+            <Route path="/tomorrow" element={<Tomorrow tomorrow={tomorrow} />} />
+            <Route path="/week" element={<Week week={week} />} />
+          </Routes>
+
 
     </div>
   );

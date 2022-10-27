@@ -1,50 +1,72 @@
-export default function ShowPicture({ today }) {
+import { useState } from "react"
+import { useEffect } from "react"
 
-  console.log(today.shortForecast)
+export default function ShowPicture({ current, today }) {
 
-  let weather = today.shortForecast
+  let now = current.shortForecast
+  let later = today.shortForecast
   let temperature = today.temperature
+  let currentTemperature = current.temperature
 
+  const [icon, setIcon] = useState('')
+  const [greeting, setGreeting] = useState('')
 
-  const getWeatherIcon = (weather) => {
+  const getWeatherIcon = (now) => {
 
-    if (weather.includes('Chance Rain')) {
+    if (now.includes('Chance Rain')) {
       return 'chancerain'
-    } else if (weather.includes('Rain')) {
+    } else if (now.includes('Rain')) {
       return 'rain'
-    } else if (weather.includes('Snow')) {
+    } else if (now.includes('Snow')) {
       return 'snow'
-    } else if (weather.includes('Storm') || weather.includes('storm')) {
+    } else if (now.includes('Storm') || now.includes('storm')) {
       return 'storm'
-    } else if (weather.includes('Cloudy')) {
+    } else if (now.includes('Cloudy')) {
       return 'cloudy'
-    } else if (weather.indexOf('Sunny') === 0) {
+    } else if (now.indexOf('Sunny') === 0 || now.indexOf('Clear') === 0) {
       return 'sun'
     } else {
       return 'partlysunny'
     }
   }
 
-  let icon = getWeatherIcon(weather)
 
-  const getGreeting = (weather, temperature) => {
+  const getGreeting = (later, now, temperature) => {
     switch(true) {
-      case weather.includes('Rain'):
+      case later.includes('Rain') || now.includes('Rain'):
         return 'Remember your umbrella!'
       case temperature < 40:
         return 'Wear your winter coat and gloves!'
-      case weather.includes('Sunny'):
+      case later.includes('Sunny') && now.includes('Sunny'):
         return('Enjoy the sun!')      
       default:
-        return 'Have fun!'
+        return 'Enjoy Your Day!'
     }
   }
-  let greeting = getGreeting(weather, temperature)
+
+  useEffect(() => {
+    if (now && later && temperature) {
+      setIcon(getWeatherIcon(now))
+      setGreeting(getGreeting(later, now, temperature))
+    }
+  }, [now, later, temperature])
+
 
   return(
     <>
-    <img src={`./images/${icon}.png`} alt="weather" />
-    {greeting}
+
+  <div className="card weather-card border-info rounded-2 shadow-lg">
+    <div className="card-header fs-2">
+    {now} {currentTemperature}F
+    </div>
+    {icon && <img src={`./images/${icon}.png`} alt="weather" />}
+    <div className="card-body">
+      {greeting && <p className="card-text m-1 fs-2 text-center">{greeting}</p>}
+    </div>
+  </div>
+
+    
+    
     </>
   )
 }

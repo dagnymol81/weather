@@ -1,0 +1,23 @@
+.weather-card {
+  width: 20rem;
+}
+
+.weather-card img {
+  width: 15rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+}
+
+div.weekly >div:nth-of-type(odd) {
+  background: rgb(208, 229, 255)
+}
+
+div.weekly div {
+  padding: 1rem;
+}
+
+h1 {
+  text-align: center;
+  margin: 2rem;
+}
