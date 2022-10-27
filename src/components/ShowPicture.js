@@ -1,15 +1,8 @@
-import { useState } from "react"
-import { useEffect } from "react"
+import { useState, useEffect } from 'react'
 
-export default function ShowPicture({ current, today }) {
-
-  let now = current.shortForecast
-  let later = today.shortForecast
-  let temperature = today.temperature
-  let currentTemperature = current.temperature
+export default function ShowPicture({ weather }) {
 
   const [icon, setIcon] = useState('')
-  const [greeting, setGreeting] = useState('')
 
   const getWeatherIcon = (now) => {
 
@@ -30,43 +23,15 @@ export default function ShowPicture({ current, today }) {
     }
   }
 
-
-  const getGreeting = (later, now, temperature) => {
-    switch(true) {
-      case later.includes('Rain') || now.includes('Rain'):
-        return 'Remember your umbrella!'
-      case temperature < 40:
-        return 'Wear your winter coat and gloves!'
-      case later.includes('Sunny') && now.includes('Sunny'):
-        return('Enjoy the sun!')      
-      default:
-        return 'Enjoy Your Day!'
-    }
-  }
-
   useEffect(() => {
-    if (now && later && temperature) {
-      setIcon(getWeatherIcon(now))
-      setGreeting(getGreeting(later, now, temperature))
+    if (weather) {
+      setIcon(getWeatherIcon(weather))
     }
-  }, [now, later, temperature])
+  }, [weather])
 
-
-  return(
-    <>
-
-  <div className="card weather-card border-info rounded-2 shadow-lg">
-    <div className="card-header fs-2">
-    {now} {currentTemperature}F
-    </div>
+return (
+  <>
     {icon && <img src={`./images/${icon}.png`} alt="weather" />}
-    <div className="card-body">
-      {greeting && <p className="card-text m-1 fs-2 text-center">{greeting}</p>}
-    </div>
-  </div>
-
-    
-    
-    </>
-  )
+  </>
+)
 }
