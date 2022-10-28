@@ -44,7 +44,7 @@ export default function Card({ period, id }) {
       {heading}
     </div>
     <div className="card-body">
-      {forecast && <ShowPicture weather={forecast} />}
+      {forecast && <ShowPicture weather={forecast} daytime={daytime} />}
     </div>
     <div className="card-footer">
       {forecast} {temperature}F

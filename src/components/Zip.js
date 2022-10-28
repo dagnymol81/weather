@@ -22,7 +22,7 @@ export default function Zip({ getZip }) {
                 size="5"
                 maxLength="5"
             />
-          <button className="btn btn-primary">OK</button>
+          <button className="btn border">OK</button>
         </form>
     </div>
   )

@@ -5,6 +5,9 @@ export default function About() {
     <p>
       Weather application created by Dagny Mol using National Weather Service data. See the code on <a href="https://github.com/dagnymol81/weather">GitHub.</a>
     </p>
+    <p>
+      Weather icons by <a href="https://github.com/basmilius/weather-icons">Bas Milius</a>
+    </p>
   </div>
   )
 

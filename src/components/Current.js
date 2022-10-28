@@ -18,7 +18,7 @@ export default function Current({ current }) {
     {now && <ShowPicture weather={now} />}
 
     </div>
-    <div class="card-footer">
+    <div className="card-footer">
     {now} {currentTemperature}F
    </div>
 
