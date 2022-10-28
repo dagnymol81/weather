@@ -11,8 +11,6 @@ import About from './pages/About'
 //components
 import Nav from './components/Nav';
 
-//todo geolocation component
-
 function App() {
 
   //variables
@@ -98,11 +96,11 @@ function App() {
   return (
     <div className="App">
 
-        <Nav useGeolocation={useGeolocation} getZip={getZip} />
+        <Nav useGeolocation={useGeolocation} getZip={getZip} weekly={weekly} />
 
             <Routes>
               <Route path="/" element={<Home current={current} periodOne={periodOne} periodTwo={periodTwo} periodThree={periodThree} city={city} state={state} getZip={getZip} useGeolocation={useGeolocation} />}  />
-              <Route path="/week" element={<Week week={week} />} />
+              <Route path="/week" element={<Week week={week} getZip={getZip} useGeolocation={useGeolocation} />} />
               <Route path="/about" element={<About />} />
             </Routes>
 

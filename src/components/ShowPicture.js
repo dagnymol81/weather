@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export default function ShowPicture({ weather, daytime }) {
+export default function ShowPicture({ weather, daytime, weekly }) {
 
   const [icon, setIcon] = useState('')
 
@@ -35,12 +35,16 @@ export default function ShowPicture({ weather, daytime }) {
       } else {
         return 'cloudynight'
       }
-    } else if (now.indexOf('Sunny') === 0 || now.indexOf('Clear') === 0) {
+    } else if (now.indexOf('Sunny') === 0 || now.includes('Clear')) {
       if (daytime) {
         return 'sun'
       } else {
         return 'clearnight'
-      }
+      } 
+    } else if (now.includes('Fog')) {
+        return 'fog'
+    } else if (now.includes('Windy')) {
+      return 'wind'
     } else {
       if (daytime) {
         return 'partlysunny'
@@ -53,13 +57,13 @@ export default function ShowPicture({ weather, daytime }) {
 
   useEffect(() => {
     if (weather) {
-      setIcon(getWeatherIcon(weather))
+        setIcon(getWeatherIcon(weather) + '.svg')
     }
   }, [weather])
 
 return (
   <>
-    {icon && <img src={`./images/${icon}.svg`} alt="weather" />}
+    {icon && <img src={`./images/${icon}`} alt="weather" />}
   </>
 )
 }

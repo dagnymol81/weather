@@ -19,14 +19,21 @@ div.weekly div {
   padding: 1rem;
 }
 
+div.weekly {
+  min-height: 100vh;
+}
+
 .welcome {
-  width: fit-content;
-  min-height: 50vh;
-  margin-left: auto;
-  margin-right: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: white !important;
+}
+
+
+
+.welcome-container img {
+  width: 30rem;
 }
 
 .two-day-container {
@@ -34,4 +41,9 @@ div.weekly div {
   max-width: 120rem;
   margin-left: auto;
   margin-right: auto;
+}
+
+.weekly-icon img {
+  height: 5rem;
+  width: 5rem;
 }
