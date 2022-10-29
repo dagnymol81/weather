@@ -4,62 +4,58 @@ export default function ShowPicture({ weather, daytime, weekly }) {
 
   const [icon, setIcon] = useState('')
 
-  const getWeatherIcon = (now) => {
-    if (now.includes('Chance Rain')) {
-      if (daytime) {
-        return 'chancerain'
-      } else {
-        return 'rain-night'
-      }
-    } else if (now.includes('Rain')) {
-      if (daytime) {
-        return 'rain'
-      } else {
-        return 'rain-night'
-      }
-    } else if (now.includes('Snow')) {
-      if (daytime) {
-        return 'snow'
-      } else {
-        return 'snow-night'
-      }
-    } else if (now.includes('Storm') || now.includes('storm')) {
-      if (daytime) {
-        return 'storm'
-      } else {
-        return 'snow-night'
-      }
-    } else if (now.includes('Cloudy')) {
-      if (daytime) {
-        return 'cloudy'
-      } else {
-        return 'cloudynight'
-      }
-    } else if (now.indexOf('Sunny') === 0 || now.includes('Clear')) {
-      if (daytime) {
-        return 'sun'
-      } else {
-        return 'clearnight'
-      } 
-    } else if (now.includes('Fog')) {
-        return 'fog'
-    } else if (now.includes('Windy')) {
-      return 'wind'
-    } else {
-      if (daytime) {
-        return 'partlysunny'
-      } else {
-        return 'cloudynight'
-      }
-
-    }
-  }
-
   useEffect(() => {
     if (weather) {
-        setIcon(getWeatherIcon(weather) + '.svg')
-    }
-  }, [weather])
+
+      if (weather.includes('Chance Rain')) {
+        if (daytime) {
+          setIcon('rain.svg')
+        } else {
+          setIcon('rain-night.svg')
+        }
+      } else if (weather.includes('Rain')) {
+        if (daytime) {
+          setIcon('rain.svg')
+        } else {
+          setIcon('rain-night.svg')
+        }
+      } else if (weather.includes('Snow')) {
+        if (daytime) {
+          setIcon('snow.svg')
+        } else {
+          setIcon('snow-night.svg')
+        }
+      } else if (weather.includes('Storm') || weather.includes('storm')) {
+        if (daytime) {
+          setIcon('storm.svg')
+        } else {
+          setIcon('snow-night.svg')
+        }
+      } else if (weather.includes('Cloudy')) {
+        if (daytime) {
+          setIcon('cloudy.svg')
+        } else {
+          setIcon('cloudynight.svg')
+        }
+      } else if (weather.indexOf('Sunny') === 0 || weather.includes('Clear')) {
+        if (daytime) {
+          setIcon('sun.svg')
+        } else {
+          setIcon('clearnight.svg')
+        } 
+      } else if (weather.includes('Fog')) {
+          setIcon('fog.svg')
+      } else if (weather.includes('Windy')) {
+        setIcon('wind.svg')
+      } else {
+        if (daytime) {
+          setIcon('partlysunny.svg')
+        } else {
+          setIcon('cloudynight.svg')
+        }
+      }
+
+}}, [weather, daytime])
 
 return (
   <>
