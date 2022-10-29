@@ -4,6 +4,7 @@ export default function Current({ current }) {
 
   let now = current.shortForecast
   let currentTemperature = current.temperature
+  let daytime = current.isDaytime
 
   return(
 
@@ -15,7 +16,7 @@ export default function Current({ current }) {
 
     <div className="card-body">
 
-    {now && <ShowPicture weather={now} />}
+    {now && <ShowPicture weather={now} daytime={daytime} />}
 
     </div>
     <div className="card-footer">

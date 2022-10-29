@@ -3,16 +3,23 @@ import Zip from "../components/Zip"
 
 export default function Welcome({ getZip, useGeolocation }) {
   return(
-    <>
-    <h1 className="text-center m-5">What's the Weather?</h1>
-    <div className="welcome-container d-flex flex-row justify-content-center">
-      <img src="/images/weathervane.png" alt="Weather Vane" className="p-5" />
-      <div className="welcome p-5">
-        <h2>Enter your ZIP code<br />Or click "Find Me"</h2>
-        <Zip getZip={getZip} />
-        <Geolocation useGeolocation={useGeolocation} />
+
+    <div className="container welcome">
+
+      <header>
+        <h1 className="mt-5">What's the Weather?</h1>
+        <h2>Enter your ZIP code or click "Find Me"</h2>
+      </header>
+
+        <div className="d-flex flex-row justify-content-around">
+          <Zip getZip={getZip} />
+          <Geolocation useGeolocation={useGeolocation} />
+        </div>
+
+
+
+        <img src="/images/forecast.png" alt="Forecast Illustration" />
    </div>
-  </div>
-    </>
+
   )
 }
