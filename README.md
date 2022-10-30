@@ -1,6 +1,6 @@
 # What's the Weather?
 
-![Screenshot](/images/weather-screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/dagnymol81/weather/main/public/images/weather-screenshot.png)
 
 What's the Weather? is a weather forecasting app built using React. Weather forecast data comes directly from the [National Weather Service API](https://www.weather.gov/documentation/services-web-api).
 
