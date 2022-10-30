@@ -8,7 +8,7 @@ What's the Weather? was inspired by conversations with my kids during breakfast.
 
 # How to Use
 
-What's the Weather? is deployed at [https://weather-today-2022.netlify.app/about](https://weather-today-2022.netlify.app/about).
+What's the Weather? is deployed at [https://weather-today-2022.netlify.app/about](https://weather-today-2022.netlify.app/).
 
 # License
 
