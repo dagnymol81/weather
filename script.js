@@ -53,19 +53,20 @@ const frontPage = async (latlongURL) => {
     const icon = findIcon(forecast.shortForecast)
     const timeOfDay = forecast.isDaytime ? 'day' : 'night'
     let forecastCard = document.createElement("div")
-    forecastCard.className = "col"
     forecastCard.innerHTML = `
-    <div class="card">
-      <div class="card-header">${forecast.name}</div>
+
+      <div class="forecast-header"><strong>${forecast.name}</strong></div>
+
+      <div class="forecast-body">
       <img src="/images/${timeOfDay}/${icon}.svg" alt=${forecast.shortForecast}>
-      <div class="card-body">
-        <h2>${temperature}&deg; F</h2>
+      <h2>${temperature}&deg; F</h2>
       </div>
-      <div class="card-footer" id="today">
-        ${currentForecast}
+
+      <div class="forecast-footer">
+      ${currentForecast}
       </p>
       </div>
-    </div>
+
     `
     document.querySelector("#twoDayDisplay").appendChild(forecastCard)
   })
