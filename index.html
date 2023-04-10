@@ -5,11 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>What's the Weather?</title>
     <link href="styles.css" rel="stylesheet">
-    <script src="script.js" defer></script>
+    <script src="get-forecast.js" defer></script>
+    <script src="find-icon.js" defer></script>
+    <script src="app.js" defer></script>
   </head>
   <body>
     <div id="container">
+      <header>
+        <form>
+          Enter ZIP:
+          <input type="text" id="zip-text">
+          <button id="zip-submit">Submit</button>
+        </form>
+      </header>
       <h1>What's the Weather?</h1>
+      <h2 id="title"></h2>
       <div id="twoDayDisplay"></div>
 
       <h2>This Week's Forecast</h2>
