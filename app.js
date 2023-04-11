@@ -13,12 +13,20 @@ document.getElementById("zip-submit").addEventListener("click", (event) => {
   })
 })
 
-//todo: don't append
-
 const frontPage = (dailyForecast) => {
   console.log(dailyForecast)
   const twoDay = dailyForecast.slice(0,4)
   const extendedForecast = dailyForecast.slice(4)
+
+  let twoDayDisplay = document.getElementById("twoDayDisplay");
+  while (twoDayDisplay.firstChild) {
+    twoDayDisplay.removeChild(twoDayDisplay.firstChild);
+  }
+
+  let extendedForecastDisplay = document.getElementById("extendedForecastTable");
+  while (extendedForecastDisplay.firstChild) {
+    extendedForecastDisplay.removeChild(extendedForecastDisplay.firstChild);
+  }
 
   extendedForecast.forEach(forecast => {
     const currentForecast = forecast.detailedForecast
@@ -33,6 +41,7 @@ const frontPage = (dailyForecast) => {
     `
     document.querySelector("#extendedForecastTable").appendChild(forecastRow)
   })
+
 
   twoDay.forEach(forecast => {
     const currentForecast = forecast.detailedForecast
@@ -59,8 +68,3 @@ const frontPage = (dailyForecast) => {
   })
 
 }
-
-
-// frontPage(latlongURL)
-
-
