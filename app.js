@@ -1,20 +1,52 @@
 document.getElementById("zip-submit").addEventListener("click", (event) => {
   event.preventDefault()
   getLocationByZIP().then((location) => {
-    document.getElementById("title").textContent=`Forecast for ${location.city}`
       url = `https://api.weather.gov/points/${location.latlong}`
       return url;
   }).then((url) => {
       forecast = getForecast(url)
       return forecast
   }).then((forecast) => {
-    console.log(forecast)
     frontPage(forecast)
   })
 })
 
+document.getElementById("geo").addEventListener("click", (event) => {
+  event.preventDefault()
+  getLocationByGeolocation()
+    .then((position) => {
+      url = `https://api.weather.gov/points/${position.coords.latitude},${position.coords.longitude}`
+      return url
+    })
+    .then((url) => {
+      forecast = getForecast(url)
+      return forecast
+    })
+    .then((forecast) => {
+      frontPage(forecast)
+    })
+  })
+
+  window.addEventListener("load", (event) => {
+    const savedURL = localStorage.getItem("url")
+    if (savedURL) {
+      getForecast(savedURL).then((forecast) => {
+        frontPage(forecast)
+      })
+    } else {
+      document.getElementById("twoDayDisplay").innerHTML = `
+      <div id="welcome">
+      <h2>What's the Weather?</h2>
+      <p>Enter your ZIP Code or click Find Me!</p>
+      <p>Note: this website relies on data from the National Weather Service; therefore, only US locations are supported.</p>
+      <img src="images/forecast.png" alt="Line art image of a weather forecast">
+    </div>
+      `
+    }
+  })
+
 const frontPage = (dailyForecast) => {
-  console.log(dailyForecast)
+
   const twoDay = dailyForecast.slice(0,4)
   const extendedForecast = dailyForecast.slice(4)
 
@@ -49,6 +81,7 @@ const frontPage = (dailyForecast) => {
     const icon = findIcon(forecast.shortForecast)
     const timeOfDay = forecast.isDaytime ? 'day' : 'night'
     let forecastCard = document.createElement("div")
+    forecastCard.className = "card"
     forecastCard.innerHTML = `
 
       <div class="forecast-header"><strong>${forecast.name}</strong></div>
