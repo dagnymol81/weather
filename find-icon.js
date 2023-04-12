@@ -45,4 +45,4 @@ const findIcon = (forecast) => {
     else {
       return 'partlysunny'
     }
-    }
+  }

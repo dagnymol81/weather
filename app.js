@@ -1,12 +1,14 @@
 document.getElementById("zip-submit").addEventListener("click", (event) => {
   event.preventDefault()
   getLocationByZIP().then((location) => {
-      url = `https://api.weather.gov/points/${location.latlong}`
+      url = `https://api.weather.gov/points/${location}`
       return url;
-  }).then((url) => {
+  })
+  .then((url) => {
       forecast = getForecast(url)
       return forecast
-  }).then((forecast) => {
+  })
+  .then((forecast) => {
     frontPage(forecast)
   })
 })
@@ -83,7 +85,6 @@ const frontPage = (dailyForecast) => {
     let forecastCard = document.createElement("div")
     forecastCard.className = "card"
     forecastCard.innerHTML = `
-
       <div class="forecast-header"><strong>${forecast.name}</strong></div>
 
       <div class="forecast-body">
@@ -95,7 +96,6 @@ const frontPage = (dailyForecast) => {
       ${currentForecast}
       </p>
       </div>
-
     `
     document.querySelector("#twoDayDisplay").appendChild(forecastCard)
   })
