@@ -2,15 +2,19 @@
 
 ![Screenshot of a two-day forecast](https://raw.githubusercontent.com/dagnymol81/weather/main/images/screenshot.png)
 
-What's the Weather? is a simple weather forecasting website. Weather forecast data comes directly from the [National Weather Service API](https://www.weather.gov/documentation/services-web-api).
+What's the Weather? is a simple weather forecasting website. 
 
 ## Goal and Audience
 
-What's the Weather? was inspired by conversations with my kids during breakfast. Weather information helps us choose the right clothes, pick out a coat, and decide on accessories. What's the Weather? provides a simple interface focused on providing the most relevant information. Because 'What's the Weather?' relies on National Weather Service data, it is US-only.
+What's the Weather? was inspired by conversations with my kids during breakfast. Weather information helps us choose the right clothes, pick out a coat, and decide on accessories. What's the Weather? provides a simple interface focused on providing the most relevant information. 
+
+Because 'What's the Weather?' relies on National Weather Service data, it is US-only.
 
 ## Technology
 
 "What's the Weather?" was built with JavaScript, HTML and CSS. For the React/Bootstrap version, checkout the "react" branch.
+
+Weather forecast data comes directly from the [National Weather Service API](https://www.weather.gov/documentation/services-web-api).
 
 ## License
 
