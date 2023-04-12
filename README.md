@@ -1,5 +1,7 @@
 # What's the Weather?
 
+![Screenshot of a two-day forecast](https://raw.githubusercontent.com/dagnymol81/weather/main/images/screenshot.png)
+
 What's the Weather? is a simple weather forecasting website. Weather forecast data comes directly from the [National Weather Service API](https://www.weather.gov/documentation/services-web-api).
 
 ## Goal and Audience
