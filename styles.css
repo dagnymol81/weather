@@ -82,7 +82,7 @@ footer {
   border: 1px solid gray;
   width: 18rem;
   display: grid;
-  grid-template-rows: 4rem 1fr 10rem;
+  grid-template-rows: 4rem 1fr 11rem;
   box-shadow: 0.5rem 0.5rem 0.5rem silver;
 }
 

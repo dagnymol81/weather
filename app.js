@@ -36,14 +36,29 @@ document.getElementById("geo").addEventListener("click", (event) => {
         frontPage(forecast)
       })
     } else {
-      document.getElementById("twoDayDisplay").innerHTML = `
-      <div id="welcome">
-      <h2>What's the Weather?</h2>
-      <p>Enter your ZIP Code or click Find Me!</p>
-      <p>Note: this website relies on data from the National Weather Service; therefore, only US locations are supported.</p>
-      <img src="images/forecast.png" alt="Line art image of a weather forecast">
-    </div>
-      `
+
+      const twoDay = document.getElementById("twoDayDisplay")
+      
+      const welcome = document.createElement("div")
+      welcome.id = "welcome"
+      
+      const title = document.createElement("h2")
+      title.textContent = "What's the Weather?"
+      const instructions = document.createElement("p")
+      instructions.textContent = "Enter your ZIP code or click Find Me!"
+      const note = document.createElement("p")
+      note.textContent = "Note: this website relies on data from the National Weather Service; therefore, only US locations are supported."
+      const img = document.createElement("img")
+      img.src = "images/forecast.png"
+      img.alt = "Line art image of a weather forecast"
+
+      welcome.appendChild(title)
+      welcome.appendChild(instructions)
+      welcome.appendChild(note)
+      welcome.appendChild(img)
+
+      twoDay.appendChild(welcome)
+      
     }
   })
 
@@ -84,19 +99,32 @@ const frontPage = (dailyForecast) => {
     const timeOfDay = forecast.isDaytime ? 'day' : 'night'
     let forecastCard = document.createElement("div")
     forecastCard.className = "card"
-    forecastCard.innerHTML = `
-      <div class="forecast-header"><strong>${forecast.name}</strong></div>
 
-      <div class="forecast-body">
-      <img src="images/${timeOfDay}/${icon}.svg" alt=${forecast.shortForecast}>
-      <h2>${temperature}&deg; F</h2>
-      </div>
+    const header = document.createElement("div")
+    header.className = "forecast-header"
+      const headerText = document.createElement("strong")
+      headerText.innerText = forecast.name
+      header.appendChild(headerText)
 
-      <div class="forecast-footer">
-      ${currentForecast}
-      </p>
-      </div>
-    `
+
+    const body = document.createElement("div")
+    body.className = "forecast-body" 
+      const img = document.createElement("img")
+      img.src = `images/${timeOfDay}/${icon}.svg`
+      img.alt = forecast.shortForecast
+      const temp = document.createElement("h2")
+      temp.innerText = `${temperature}° F`
+    body.appendChild(img)
+    body.appendChild(temp)
+
+    const footer = document.createElement("div")
+    footer.className = "forecast-footer"
+    footer.innerText = currentForecast
+    
+    forecastCard.appendChild(header)
+    forecastCard.appendChild(body)
+    forecastCard.appendChild(footer)
+
     document.querySelector("#twoDayDisplay").appendChild(forecastCard)
   })
 
